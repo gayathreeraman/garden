@@ -3,31 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>BetterGarden</title>
-    {{-- <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" > --}}
+    
     <link href='css/style.css' rel="stylesheet" type="text/css" >
     <link href='https://fonts.googleapis.com/css?family=Nobile|Vidaloka' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-    <script src="js/dragdrop.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    
 
 </head>
 <body>
+
+
      <div class="innerHero">
             
         <header>
-            <p>Better Gardens <div ><img  class="logo" src='/images/site_image/Logo3.png'></div></p>
-            @if(!Auth::User())
-             <a href="/auth/login"><div id="login">login</div></a>
-              @else
-             <a href="/auth/logout"><div id="login">logout</div></a>
-             @endif
-             @if(!Auth::User())
-            <a href="/auth/register"><div id="signup">Sign Up</div></a>
-            @endif
-
+            <p>Better Gardens</p>
+            <button id="login">login</button>
+            <button id="signup">Sign Up</button>
 
         </header>
 
@@ -47,7 +39,13 @@
                 </div>
 
                 <div class="infoitem">
-                    <ul class="stencils groups"></ul>
+                    <ul class="stencils groups">
+                        <img class ="tree"src="/images/site_image/tree1.png">
+                        <img class ="tree"src="/images/site_image/tree1.png">
+                        <img class ="tree"src="/images/site_image/tree1.png">
+                        <img class ="tree"src="/images/site_image/tree1.png">
+                        
+                    </ul>
                 </div>
 
 
@@ -57,15 +55,15 @@
 
             <div class="outertarget">
 
+            
+
                 <div class="title">
               
                 Garden Title <input class="gardensubtitle" type="text" name="title" value="">
                     <ul>
                         <li class="navBar"><button id="clearbutton">Clear</button></li>
                         <li class="navBar"><button id="printbutton">Print</button></li>
-                        @if(Auth::User())
-                        <a href="/garden"><li class="navBar"><button id="openbutton">Open</button></li></a>
-                        @endif
+                        <a href="/index/savedlayout"><li class="navBar"><button id="openbutton">Open</button></li></a>
                         {{-- <li class="navBar"><button>Sample Layout</button></li> --}}
                        <li class="navBar"><div class="lb-btn"><button id="btnSave">Save</button></div></li>
                     </ul>
@@ -74,20 +72,14 @@
 
                 </div>
                 </br>
-
                 <div id="divLayout" class="target"></div>
-                        
-                    
-            </div>
 
-            <div class="trashLayout"><i class="fa fa-trash"></i></div>
-                    
-                
-        </div>
+                <div class="logininfo">
+                     
+                <div class="table">
+                <table class="logintable">
+                    <tr>
 
-                {{-- <div class="lightbox">
-                <div>
-                    <button class="btncloselb"><i class="fa fa-times"></i></button>
                     <form method="POST" action="/auth/login">
                 {!! csrf_field() !!}
 
@@ -102,9 +94,9 @@
                     </ul>
                     </div>
                     @endif
-                    <div>
-                    Email
-                    <input type="email" name="email" value="{{ old('email') }}">
+                    <div >
+                    <th>Email:</th>
+                    <th><input class="inputemail" type="email" name="email" value="{{ old('email') }}" >
                     @if(count($errors) > 0)
                         @if(count($errors->getBags()['default']->get('email'))>0)
                         <span>
@@ -113,25 +105,41 @@
                         </span>
                         @endif
                     @endif
+
                     <div>
 
 
                     </div>
+                    </th>
 
-                    <div>
-                        Password
-                        <input type="password" name="password" id="password">
+                    <div >
+                       <tr><th> Password:</th>
+                       <th> <input class="inputpw" type="password" name="password" id="password">
                     </div>
+                    </th>
+                    </table>
 
-                    <div>
+                    <div class="inputcb">
                         <input type="checkbox" name="remember"> Remember Me
                     </div>
-
-                    <div>
+                    
+                    <div class="inputlogin">
                         <button type="submit">Login</button>
                     </div>
                 </form>
-                </div> --}}
+                </table>
+              
+                </div>
+                        
+                    
+            </div>
+
+            <div class="trashLayout"></div>
+                    
+                
+        </div>
+
+               
         </div>
 
         <br>

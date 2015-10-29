@@ -5,17 +5,14 @@ class Item  {
 	protected static $table ="item" ;
 
 
-public static function getItemsByCategory($category){
-
+	public static function getItemsByCategory($category){
 	
-	$items = DB::select("SELECT * from item where category = :category" ,["category"=>$category]);
+		$items = DB::select("SELECT * from item where category = :category" ,["category"=>$category]);
+		 // print_r($items);
+		return $items;
+	}
 
-	
-	return $items;
 
-
-
-}
 // public function itemAdd(){
 
 // 	DB::INSERT('INSERT into item where id=:id',["id"=>$id]);

@@ -11,25 +11,38 @@
 |
 */
 
+// 
+// Route::get('home',['middleware' => 'auth',function(){
+// 	return view ('home');
+// }]);
+
+Route::get('/',function(){
+ 	return view ('home');
+ });
+
 // Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('home',['middleware' => 'auth',function(){
-	return view ('home');
-}]);
-Route::get('/', function () {
-	// todo; make a db call to get items to populate drag and drop.
 	
-    return view('index');
+//     return view('home');
+// });
+
+Route::get('/login', function () {
+	
+    return view('login');
 });
-Route::get('/index/savedlayout', function () {
-    return view('savedlayout');
-});
+
+// Route::get('home/savedlayout', function () {
+	
+//     return view('savedlayout');
+// });
+
+
 
 
 Route::get('api/item/category/{category}', 'ItemController@getByCategory'); 
 
 
+Route::get('garden','GardenController@viewAll');
+Route::get('garden/{id}','GardenController@view');
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');

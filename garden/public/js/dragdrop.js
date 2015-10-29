@@ -1,5 +1,10 @@
 $(function(){
 
+	var source=$('#template-imagelist').html();
+
+	var template = Handlebars.compile(source);
+
+
 	$.get("/api/item/category/tree", function(data){
 
 		 	console.log(data);
@@ -10,16 +15,65 @@ $(function(){
 		 	item = data[i];
 
 		 	var bindData = template(item);
-		  	$('.stencils.trees').append(bindData);
+		  	$('.stencils.groups').append(bindData);
 
 			}
 
 
 	 	})
 
+
+	$('#tree_button').on('click',function(){
+		var siblings = $(this).siblings();
+
+		siblings.each(function(){
+			$(this).removeClass('selected');
+		})
+    	$(this).addClass('selected');
+
+	});
+	$('#bush_button').on('click',function(){
+		var siblings = $(this).siblings();
+
+		siblings.each(function(){
+			$(this).removeClass('selected');
+		})
+    	$(this).addClass('selected');
+
+	});
+	$('#grass_button').on('click',function(){
+		var siblings = $(this).siblings();
+
+		siblings.each(function(){
+			$(this).removeClass('selected');
+		})
+    	$(this).addClass('selected');
+
+	});
+	$('#paver_button').on('click',function(){
+		var siblings = $(this).siblings();
+
+		siblings.each(function(){
+			$(this).removeClass('selected');
+		})
+    	$(this).addClass('selected');
+
+	});
+	$('#flower_button').on('click',function(){
+		var siblings = $(this).siblings();
+
+		siblings.each(function(){
+			$(this).removeClass('selected');
+		})
+    	$(this).addClass('selected');
+
+	});
+
+
+
 	var dragEl = null;
 
-	$(".stencils").on("dragstart", ".drag-item", function(event){
+	jQuery(".stencils").on("dragstart", ".drag-item", function(event){
 		event.stopPropagation();
 		console.log("hello");
 		dragEl = $(this).clone()
@@ -76,9 +130,9 @@ $(function(){
 
 	$('.target').on('drop',function(event){
 
-		var thisLeft = ($(this).offset().left-25)
-		//var thisTop = $(this).offset().top + $(dragEl).outerHeight()/2
-		var thisTop = $(this).offset().top + 40
+		var thisLeft = ($(this).offset().left)
+		//var thisTop = $(this).offset().top + $(dragEl).outerHeight()
+		var thisTop = $(this).offset().top + 35
 		$('.target').append(dragEl)
 
 		dragEl.css({
@@ -132,14 +186,11 @@ $(function(){
 
 
 
-	var source=$('#template-imagelist').html();
-
-	var template = Handlebars.compile(source);
-
+	
 
 	$('#tree_button').on('click', function(){
 
-		$('.drag-item').remove();
+		$('.stencils').html("");
 
 	 	$.get("/api/item/category/tree", function(data){
 
@@ -152,7 +203,7 @@ $(function(){
 
 		 	var bindData = template(item);
 
-		  	$('.stencils.trees').append(bindData);
+		  	$('.stencils').append(bindData);
 
 			}
 
@@ -162,7 +213,7 @@ $(function(){
 
 	$('#bush_button').on('click', function(){
 		
-		$('.drag-item').remove()
+	$('.stencils').html("");
 
 	 	$.get("/api/item/category/bush", function(data){
 
@@ -174,7 +225,7 @@ $(function(){
 
 		 	var bindData = template(item);
 
-		  	$('.stencils.trees').append(bindData);
+		  	$('.stencils').append(bindData);
 
 			}
 
@@ -184,7 +235,7 @@ $(function(){
 
 	$('#flower_button').on('click', function(){
 
-		$('.drag-item').remove()
+		$('.stencils').html("");
 
 	 	$.get("/api/item/category/flower", function(data){
 
@@ -196,7 +247,7 @@ $(function(){
 
 		 	var bindData = template(item);
 
-		  	$('.stencils.trees').append(bindData);
+		  	$('.stencils').append(bindData);
 
 			}
 
@@ -206,7 +257,7 @@ $(function(){
 
 	$('#paver_button').on('click', function(){
 
-		$('.drag-item').remove()
+	$('.stencils').html("");
 
 	 	$.get("/api/item/category/paver", function(data){
 
@@ -218,7 +269,7 @@ $(function(){
 
 		 	var bindData = template(item);
 
-		  	$('.stencils.trees').append(bindData);
+		  	$('.stencils').append(bindData);
 
 			}
 
@@ -228,7 +279,10 @@ $(function(){
 
 	$('#grass_button').on('click', function(){
 
-		$('.drag-item').remove()
+	$('.stencils').html("");
+
+
+
 
 	 	$.get("/api/item/category/grass", function(data){
 
@@ -240,12 +294,28 @@ $(function(){
 
 		 	var bindData = template(item);
 
-		  	$('.stencils.trees').append(bindData);
+		  	$('.stencils').append(bindData);
 
 			}
 
 
 	 	})
 	 });
+
+
+		// $('#btnSave').click(function(){
+		// 	$('.lightbox').toggleClass('lb-open');
+
+
+		// });
+
+
+		// $('#login').click(function(){
+		// 	$('.lightbox').toggleClass('lb-open');
+
+
+		// });
+
+
 
 });
