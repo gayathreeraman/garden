@@ -74,11 +74,10 @@ class Garden {
 	}
 
 
-// 	public static function delete($garden_id){
-// $sql = "
-//         DELETE from game where garden_id = :garden_id";
-//         DB::delete($sql,[':garden_id'=> $garden_id]);   
-// 	}
+ 	public static function delete($garden_id){
+ 	$sql = "DELETE from garden where garden_id = :garden_id";
+         DB::delete($sql,[':garden_id'=> $garden_id]);   
+ 	}
 
 
 	

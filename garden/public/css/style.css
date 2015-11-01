@@ -1,3 +1,9 @@
+*{
+	font-family: 'Alegreya Sans', sans-serif;
+	margin:0;
+	padding:0;
+}
+
 body{
 	-webkit-zoom-in
 	-webkit-zoom-out
@@ -11,49 +17,31 @@ body{
     user-select: none;
 	margin:0;
 	padding:0;
-	
-font-family: 'Alegreya Sans', sans-serif;
-
 	font-size: 1.5em;
-	}
-
-.innerHero{
-	background-color:#f2f2f0;
-	margin:0;
-	padding:0;
-	width:100%;
-	height:570px;
-	margin:0 auto;
-	/*margin-top:25px;*/
-
 }
+
+a, a:visited, a:hover, a:active {
+  color: inherit;
+  text-decoration: none;
+}
+/*-----------------------------------
+Header
+-----------------------------------*/
 header{
 	height:80px;
-	margin:0;
-	padding:0;
 	background-color:#373737;
+	font-family: 'Alegreya Sans', sans-serif;
 }
+
 header p{
 	position:absolute;
 	top:19px;
 	left:70px;
-	margin:0;
-	padding:0;
-	font-family: 'Lora';
 	font-size: 30px;
 	color:white;
 	font-weight: strong;
+	font-family: 'Alegreya Sans', sans-serif;
 }
-
-.headerlogin{
-	height:80px;
-	position:absolute;
-	top:10;
-	right:30px;
-	background-color: #272727;
-}
-
-
 .logo{
 	width:50px;
 	height:50px;
@@ -62,6 +50,14 @@ header p{
 	top:5px;
 	left:20px;
 	
+}
+
+.headerlogin{
+	height:80px;
+	position:absolute;
+	top:10;
+	right:30px;
+	background-color: #272727;
 }
 
 #login{
@@ -76,12 +72,7 @@ header p{
 	border-radius: 5px;
 	text-align: center;
 }
-
-#login:hover{
-	background-color: black;
-}
-
-#signup{
+#signup,#home{
 	color:white;
 	position:absolute;
 	top:0px;
@@ -93,9 +84,94 @@ header p{
 	text-align: center;
 }
 
-#signup:hover{
+#signup:hover,#login:hover,#home:hover{
 	background-color: black;
 }
+.logininfo{
+	height:380px;
+	width:900px;
+
+	/*background-image: url("/images/site_image/grid.png");*/
+	margin-top:5px;px;
+	margin-left:35px;
+	margin-right:20px;
+	position: fixed; 
+	top:100px;
+	left:100px;
+	/*flex:3;*/
+	border-radius: 3px;
+	border: 10px solid #dd6264;
+	color:black;
+	background-color: ;
+
+
+}
+.logintable{
+
+	position:fixed;
+	top:200px;
+	left:300px;
+	text-align: left;
+}
+
+.loginemail,.loginpw,.remember{
+
+	margin-top:0px;
+	text-align: left;
+}
+.inputemail,.inputpw{
+	height:20px;
+}
+
+.loginbutton1{
+	position:absolute;
+	top:170px;
+	left:0px;
+}
+.remember{
+	padding-top: 5px;
+}
+
+.loginheader{
+
+	height:70px;
+	width:100%;
+	background-color:#373737;
+	/*margin:-10px;*/
+	padding:0;
+}
+.registerinfo{
+
+	position:absolute;
+	top:100px;
+	left:150px;
+}
+
+
+
+
+.innerHero{
+	background-color:#F2F2F0;
+	margin:0;
+	padding:0;
+	width:100%;
+	height:570px;
+	margin:0 auto;
+	/*margin-top:25px;*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .gardenTitle{
 	position:absolute;
 	top:40px;
@@ -125,14 +201,14 @@ header p{
 
 .palette{
 	height:550px;
-	width:350px;
-	background-color: #f2f2ea;;
+	/*width:370px;*/
+	background-color: #f2f2ea;
 	margin:0px;
 	list-style-type: none;
 	border-radius: 3px;
 	display:flex;
 	margin:0 auto;
-	border-bottom:5px solid rgba(0, 0, 0, .8);*/
+	border-bottom:1px solid rgba(0, 0, 0, .8);
 
 }
 
@@ -147,6 +223,7 @@ header p{
 	background-color: #f2f2ea;
 	border:1px solid rgba(0, 0, 0, .2);
 	border-top: none;
+	border-right: none;
 
 }
 .group_tree:hover,.group_bush:hover,.group_grass:hover,.group_paver:hover,.group_flower:hover{
@@ -156,9 +233,6 @@ header p{
 	border:1px solid rgba(0, 0, 0, .2);
 	border-top: none;
 
-}
-.group_bush,.group_grass{
-	/*background-color:#5883a4;*/
 }
 
 
@@ -171,18 +245,15 @@ header p{
 
 .stencils{
 	list-style-type: none;
-	border-right: 2px solid rgba(0, 0, 0, .2);
+	border-right: 1px solid rgba(0, 0, 0, .2);
 	height:550px;
-	margin:0px
-	list-style-type: none;
-    border-right: 2px solid rgba(0, 0, 0, .2);
-    /*padding-left: 20px;*/
-    margin: 0px;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     padding:0;
-    /*padding-right: 20px;*/
+    
 
 
 }
@@ -259,7 +330,7 @@ header p{
 .outertarget
 {
 	height:550px;
-	margin-left:-30px;
+	/*margin-left:-30px;*/
 	width:100%;
 	/*background-color: white;*/
 	background-color:#f2f2f0;
@@ -270,7 +341,7 @@ header p{
 	width:90%;
 	padding:10px;
 	background-image: url("/images/site_image/grid.png");
-	margin-top:-5px;
+	/*margin-top:-5px;*/
 	margin-left:35px;
 	margin-right:20px;
 	position: relative; 
@@ -297,22 +368,47 @@ header p{
 #clearbutton{
 	position:absolute;
 	top:130px;
-	right:40px;
+	right:50px;
+	font-size: .8em;
+	background-color:#DD6264;
+	height:30px;
+	width:60px;
+	text-align: center;
+	line-height: 30px;
+
 }
 #printbutton{
 	position:absolute;
 	top:130px;
-	right:120px;
+	right:140px;
+	font-size: .8em;
+	background-color:#DD6264;
+	height:30px;
+	width:60px;
+	text-align: center;
+	line-height: 30px;
 }
 #openbutton{
 	position:absolute;
 	top:130px;
-	right:280px;
+	right:300px;
+	font-size: .8em;
+	background-color:#DD6264;
+	height:30px;
+	width:60px;
+	text-align: center;
+	line-height: 30px;
 }
 #btnSave{
 	position:absolute;
 	top:130px;
-	right:200px;
+	right:220px;
+	font-size: .8em;
+	background-color:#DD6264;
+	height:30px;
+	width:60px;
+	text-align: center;
+	line-height: 30px;
 }
 .gardensub	title{
 	margin-top:25px;
@@ -335,11 +431,11 @@ footer{
 
 }
 footer p{
-	padding:20px;
+	/*padding:20px;*/
 	margin:0 auto;
 	text-align:center;
 	width:70%;
-
+	line-height: 120px;
 	color:white;
 	font-size: 18px;
 }
@@ -402,76 +498,6 @@ footer p{
 	display:block;
 }
 
-.logininfo{
-	height:380px;
-	width:900px;
-
-	/*background-image: url("/images/site_image/grid.png");*/
-	margin-top:5px;px;
-	margin-left:35px;
-	margin-right:20px;
-	position: fixed; 
-	top:100px;
-	left:100px;
-	/*flex:3;*/
-	border-radius: 3px;
-	border: 10px solid #dd6264;
-	color:black;
-	background-color: ;
-
-
-}
-.logintable{
-
-	position:fixed;
-	top:200px;
-	left:300px;
-	text-align: left;
-}
-/*.inputcb{
-
-	position:fixed;
-	top:320px;
-	left:590px;
-}*/
-/*.inputlogin{
-
-	position:fixed;
-	top:350px;
-	left:670px;
-}*/
-.loginemail,.loginpw,.remember{
-
-	margin-top:0px;
-	text-align: left;
-}
-.inputemail,.inputpw{
-	height:20px;
-}
-
-.loginbutton1{
-	position:absolute;
-	top:170px;
-	left:0px;
-}
-.remember{
-	padding-top: 5px;
-}
-
-.loginheader{
-
-	height:70px;
-	width:100%;
-	background-color:#373737;
-	/*margin:-10px;*/
-	padding:0;
-}
-.registerinfo{
-
-	position:absolute;
-	top:100px;
-	left:150px;
-}
 
 .gardensubtitle{
 
@@ -482,7 +508,7 @@ footer p{
 .stencil{
 
 border-bottom:1px solid rgba(0, 0, 0, .2);;
-width:130px;
+/*width:100px;*/
 padding-left:15px;
 
 }

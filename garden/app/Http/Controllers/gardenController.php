@@ -14,7 +14,7 @@ class GardenController extends Controller{
 
 		$user = $request->user();
 
-		  print_r($user->id);
+		  // print_r($user->id);
 
 		 $gardens = Garden::getAll($user->id);
 
@@ -83,6 +83,13 @@ class GardenController extends Controller{
 	 	$gardenitem =GardenItem::insert($garden_id,$item_id,$x,$y);
 	 	return $garden_id; 
 	 }
+
+	 public static function delete($garden_id) {
+		Garden::delete($garden_id);
+
+		return redirect("/");
+		
+	}
 
 	
 }

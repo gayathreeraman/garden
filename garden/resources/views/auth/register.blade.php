@@ -6,21 +6,28 @@
     <link href='/css/style.css' rel="stylesheet" type="text/css" >
     <link href='https://fonts.googleapis.com/css?family=Nobile|Vidaloka' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
     
 
 </head>
 <body>
 <header>
-            <p>Better Gardens</p>
-          <@if(!Auth::User())
-             <a href="/auth/login"><div id="login">login</div></a>
-              @else
-             <a href="/auth/logout"><div id="login">logout</div></a>
-             @endif
-            
+            <p>Better Gardens <div ><img  class="logo" src='/images/site_image/Logo3.png'></div></p>
+            <div class="headerlogin">
+                @if(!Auth::User())
+                 <a href="/auth/login"><div id="login">Login</div></a>
+                  @else
+                 <a href="/auth/logout"><div id="login">Logout</div></a>
+                 @endif
+                 @if(!Auth::User())
+                <a href="/auth/register"><div id="signup">Sign Up</div></a>
+                
+
+                @endif
+            </div>
+
 
         </header>
-        
     
     <body>
 
