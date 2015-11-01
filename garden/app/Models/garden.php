@@ -5,70 +5,85 @@ use DB;
 class Garden {
 	protected static $table ="garden" ;
 
-	public static function getAll(){
+	public static function getAll($user_id){
 		
-		$sql = " SELECT * FROM garden";
-		$rows = DB::select($sql);
+		$sql = " SELECT * FROM garden where user_id = :user_id";
+		$rows = DB::select($sql, ["user_id"=>$user_id]);
 		$gardens =[];
 		foreach($rows as $row){
 			$garden =new Garden();
 			$garden->garden_id = $row->garden_id;
-			$garden->layout_name = $row ->layout_name;
-			$garden->date_created = $row ->date_created;
-			$gardens[] = $garden;
+			$garden->layout_name = $row->layout_name;
+			$garden->date_created = $row->date_created;
+			$gardens[] = $row;
 		}
+
+		// print_r($gardens);
 		return $gardens;
 	}
 
 
-	public static function get($id){
+	public static function get($garden_id){
 
-		$sql = "SELECT * FROM garden where id = :id";
-		$row = DB::selectOne($sql,[':id'=> $id]);
+		$sql = "SELECT * FROM garden where garden_id = :garden_id";
+		$row = DB::selectOne($sql,[':garden_id'=> $garden_id]);
 
 		$garden = new Garden();
-		$garden->id = $row ['id'];
-		$garden->layout_name = $row ['layout_name'];
-		$garden->date_created = $row['date_created'];
+		$garden->user_id = $row->user_id;
+		$garden->garden_id = $row->garden_id;
+		$garden->layout_name = $row->layout_name;
+		$garden->date_created = $row->date_created;
 		return $garden;
 	}
 	
 
+		
+	 public function save(){
+	 	if(empty($this->garden_id)){
+	 		$this->insert();
+			
+	 	} else {
+			$this->update();
+	 	}
+	 }
+
+ 	private function insert(){
+
+ 		$sql="INSERT INTO garden(user_id,layout_name)values
+ 		 (:user_id ,:layout_name)";
+ 		DB::insert($sql,['user_id'=> $this->user_id,'layout_name'=>$this->layout_name]);
+
+ 		$this->garden_id = DB::getPdo()->lastInsertId();
+ 		
+
+
+ 	}
+
+
+
+ 	private function update(){
+ 		//dd($this);
+ 		$sql = "UPDATE garden set user_id = :user_id,layout_name = :layout_name where garden_id =:garden_id";
+ 		DB::insert($sql,['user_id' => $this->user_id,'layout_name'=>$this->layout_name,'garden_id'=>$this->garden_id]);
+ 	}
+
+
+	public function deleteAllItems(){
+		$sql="DELETE from garden_item where garden_id = :garden_id";
+		DB::delete($sql,['garden_id'=> $this->garden_id]);
+	}
+
+
+// 	public static function delete($garden_id){
+// $sql = "
+//         DELETE from game where garden_id = :garden_id";
+//         DB::delete($sql,[':garden_id'=> $garden_id]);   
+// 	}
+
 
 	
-public function save(){
-		if(empty($this->id)){
-			$this->insert();
-		
-	} else {
-		$this->update();
-	}
-}
+	
 
-
-
-	public static function insert(){
-		//todo: get user_id for user_name
-		$sql="INSERT INTO garden(user_id,layout_name)values(:user_id,:layout_name)";
-		DB::insert($sql,['user_id'=>$user_id,'layout_name'=>$layout_name]);
-
-	}
-
-	// check if this is right
-
-// check if this is right
-// public static function gardenItem(coordinate_x,coordinate_y){
-// 	$sql="INSERT INTO garden_item(coordinate_x,coordinate_y)values (:coordinate_x,:coordinate_y)";
-
-// 	DB::insert($sql,['coordinate_x'=>$coordinate_x,'coordinate_y'=>$coordinate_y]);
-// }
-
-
-// public static function addItem(coordinate_x,coordinate_y){
-// 	$sql="INSERT INTO garden_item(coordinate_x,coordinate_y)values (:coordinate_x,:coordinate_y)";
-
-// 	DB::insert($sql,['coordinate_x'=>$coordinate_x,'coordinate_y'=>$coordinate_y]);
-// }
 }
  
 

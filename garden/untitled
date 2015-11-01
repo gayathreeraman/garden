@@ -1,0 +1,23 @@
+drop database if exists employee;
+create database employee;
+use employee;
+
+create table user (
+	id int auto_increment primary key,
+	name varchar(255)
+	);
+
+	insert into user (name)values('gai');
+		insert into user (name)values('gai1');
+			insert into user (name)values('gai2');
+				insert into user (name)values('gai3');
+
+create table emp(
+id int auto_increment primary key,
+address varchar(255)
+);
+
+	insert into emp(address)values('one');
+		insert into emp(address)values('one');
+			insert into emp(address)values('two');
+				insert into emp(address)values('one');

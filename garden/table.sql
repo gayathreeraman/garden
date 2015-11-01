@@ -27,7 +27,7 @@ create table item (
     category varchar(255),
     image_file_path varchar(255),
     img_css_class varchar(255)
-    
+    	
 );
 
 insert into item(display_image_name, category, image_file_path, img_css_class) values ('Oak Tree','tree','/images/site_image/tree1.png','tree');

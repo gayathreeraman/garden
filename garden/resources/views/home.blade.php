@@ -4,29 +4,44 @@
     <meta charset="UTF-8">
     <title>BetterGarden</title>
     {{-- <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" > --}}
-    <link href='css/style.css' rel="stylesheet" type="text/css" >
+    <link href='/css/style.css' rel="stylesheet" type="text/css" >
     <link href='https://fonts.googleapis.com/css?family=Nobile|Vidaloka' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <script src="js/dragdrop.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+   
+    <script>
+    garden_id = false;
+    $(function(){
+        $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': '{!! csrf_token() !!}'
+            }
+        });
+    });
+</script>            
 
+        
 </head>
 <body>
      <div class="innerHero">
             
         <header>
             <p>Better Gardens <div ><img  class="logo" src='/images/site_image/Logo3.png'></div></p>
-            @if(!Auth::User())
-             <a href="/auth/login"><div id="login">login</div></a>
-              @else
-             <a href="/auth/logout"><div id="login">logout</div></a>
-             @endif
-             @if(!Auth::User())
-            <a href="/auth/register"><div id="signup">Sign Up</div></a>
-            @endif
+            <div class="headerlogin">
+                @if(!Auth::User())
+                 <a href="/auth/login"><div id="login">Login</div></a>
+                  @else
+                 <a href="/auth/logout"><div id="login">Logout</div></a>
+                 @endif
+                 @if(!Auth::User())
+                <a href="/auth/register"><div id="signup">Sign Up</div></a>
+                @endif
+            </div>
 
 
         </header>
@@ -38,12 +53,11 @@
             <div class="palette">
 
                 <div class="category">
-
-                    <div class="group_tree" id="tree_button"><br>Tree</div>
-                    <div class="group_bush" id="bush_button"><br>Bush</div>
-                    <div class="group_flower"id="flower_button"><br>Flower</div>
-                    <div class="group_grass" id="grass_button"><br>Grass</div>
-                    <div class="group_paver" id="paver_button"><br>Paver</div>
+                    <div class="group_tree" id="tree_button">Tree</div>
+                    <div class="group_bush" id="bush_button">Bush</div>
+                    <div class="group_flower"id="flower_button">Flower</i></div>
+                    <div class="group_grass" id="grass_button">Grass</i></div>
+                    <div class="group_paver" id="paver_button">Paver</i></div>
                 </div>
 
                 <div class="infoitem">
@@ -59,15 +73,18 @@
 
                 <div class="title">
               
+                {{-- <form action="post">
+                <input type = "hidden" name = "_token" value = "{{ csrf_token() }}"> --}}
                 Garden Title <input class="gardensubtitle" type="text" name="title" value="">
+                {{-- </form> --}}
                     <ul>
-                        <li class="navBar"><button id="clearbutton">Clear</button></li>
-                        <li class="navBar"><button id="printbutton">Print</button></li>
+                        <li class="navBar"><div id="clearbutton">Clear</div></li>
+                        <li class="navBar"><div id="printbutton">Print</div></li>
                         @if(Auth::User())
-                        <a href="/garden"><li class="navBar"><button id="openbutton">Open</button></li></a>
+                        <a href="/garden"><li class="navBar"><div id="openbutton">Open</div></li></a>
                         @endif
                         {{-- <li class="navBar"><button>Sample Layout</button></li> --}}
-                       <li class="navBar"><div class="lb-btn"><button id="btnSave">Save</button></div></li>
+                       <li class="navBar"><div class="lb-btn"><div id="btnSave">Save</div></li>
                     </ul>
 
                         
@@ -85,53 +102,7 @@
                 
         </div>
 
-                {{-- <div class="lightbox">
-                <div>
-                    <button class="btncloselb"><i class="fa fa-times"></i></button>
-                    <form method="POST" action="/auth/login">
-                {!! csrf_field() !!}
-
-                    @if(count($errors) > 0)
-                    <div>
-                    <h2>Form Errors:</h2>
-                    {{{print_r($errors->getBags()['default']->get('email'))}}}
-                    <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{ $error}}</li>
-                    @endforeach
-                    </ul>
-                    </div>
-                    @endif
-                    <div>
-                    Email
-                    <input type="email" name="email" value="{{ old('email') }}">
-                    @if(count($errors) > 0)
-                        @if(count($errors->getBags()['default']->get('email'))>0)
-                        <span>
-                            {{$errors->getBags()['default']->get('email')[0]}}
-
-                        </span>
-                        @endif
-                    @endif
-                    <div>
-
-
-                    </div>
-
-                    <div>
-                        Password
-                        <input type="password" name="password" id="password">
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="remember"> Remember Me
-                    </div>
-
-                    <div>
-                        <button type="submit">Login</button>
-                    </div>
-                </form>
-                </div> --}}
+                
         </div>
 
         <br>
@@ -153,7 +124,7 @@
         <script id="template-imagelist" type="text/x-handlebars-template">
             <li class="stencil">
                 <div '#drag-item' class="drag-item @{{category}}" draggable="true">
-                    <img class="@{{img_css_class}}" src="@{{image_file_path}}" alt ="@{{display_image_name}}">
+                    <img class="@{{img_css_class}}" src="@{{image_file_path}}" alt ="@{{display_image_name}}"itemid ="@{{item_id}}">
                 </div>
             </li>      
         </script>

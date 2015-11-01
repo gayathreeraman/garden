@@ -13,16 +13,7 @@ class Item  {
 	}
 
 
-// public function itemAdd(){
-
-// 	DB::INSERT('INSERT into item where id=:id',["id"=>$id]);
-// }
-
-
-// public function itemDelete(){
-
-// 	DB::delete('delete from item where id=:id',["id"=>$id]);
-// }
+// 
 
 
 

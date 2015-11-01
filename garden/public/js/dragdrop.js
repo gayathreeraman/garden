@@ -163,26 +163,110 @@ $(function(){
 
  
 
-	$('#btnSave').click(function(){
-		//var clonedImage =[];
-        var clonedImage = $(".target").children('.drag-item');
-        //var searchEles = $("drag-item");
+	// $('#btnSave').click(function(){
+	// 	//var clonedImage =[];
+ //        var clonedImage = $(".target").children('.drag-item');
+ //        //var searchEles = $("drag-item");
 
-        for(var i = 0; i < clonedImage.length; i++) {
+ //        for(var i = 0; i < clonedImage.length; i++) {
 
-	        var control = clonedImage[i];
+	//         var control = clonedImage[i];
            
-			var xPos = control.style.left;
-        	var yPos = control.style.top;
+	// 		var xPos = control.style.left;
+ //        	var yPos = control.style.top;
 
-            //return {xPos,Ypos}
-            console.log("xPos :" + xPos);
-        	console.log("yPos :" + yPos);
-		}
+ //            //return {xPos,Ypos}
+ //            console.log("xPos :" + xPos);
+ //        	console.log("yPos :" + yPos);
+	// 	}
         
-    });
+ //    });
+
+// $('#btnSave').on('click', function(){
+
+// 	data = $(".gardensubtitle").val();
+
+// 	console.log(data);
+   	
+//    	$.post("/api/garden/layout_name", function(data){
+
+   		
+//    	})
+
+// });
+
+	
+
+	
+
+	$('#btnSave').click(function(){
+		var data = {
+			gardenName: $(".gardensubtitle").val()
+		};
+
+		if (garden_id){
+			data.garden_id = garden_id;
+		}
+
+		$.ajax({
+	    	url: '/api/garden/layout_name',
+	    	type:"POST",
+	    	data: data
+	    })
+	    .done(function(response) {
+
+    		garden_id = response.gardenId;
+
+			console.log( "success. This is my GardenID" + response.gardenId );
+
+			console.log("Sending garden items...");
+			
+			//set variable to get all the children of target
+			//var garden_id = response.gardenId;
+			// var coordinate_x = $('.drag-item').(function() $(this).css('left')
+			var items = $('.target').children();
+			
+			items.each(function(){
+				var x = $(this).css('left');
+				var y = $(this).css('top');
+				var itemid = $(this).children('img').attr('itemid');
+				//get item id
+				//get whatever else you need
+				var data = {
+					garden_id: garden_id,
+					x: x,
+					y: y,
+					item_id: itemid
+				};
+			
+				$.ajax({
+					url: '/api/garden/save_item',
+	    			type:"POST",
+	    			data: data
+	    		})
+				.done(function(response){
+					console.log(data); 
+					console.log('Item Saved' + response);
+				})
+				.fail(function(response) {
+					console.log( "error" + response );
+				});	
+
+			});
+
+		})	
+		.fail(function() {
+			console.log( "error" );
+		});	
+	});
+
+
+
+
+
 
    
+    
 
 
 

@@ -11,7 +11,9 @@ body{
     user-select: none;
 	margin:0;
 	padding:0;
-	font-family: 'Vidaloka', serif;
+	
+font-family: 'Alegreya Sans', sans-serif;
+
 	font-size: 1.5em;
 	}
 
@@ -43,6 +45,15 @@ header p{
 	font-weight: strong;
 }
 
+.headerlogin{
+	height:80px;
+	position:absolute;
+	top:10;
+	right:30px;
+	background-color: #272727;
+}
+
+
 .logo{
 	width:50px;
 	height:50px;
@@ -56,25 +67,34 @@ header p{
 #login{
 	color:white;
 	position:absolute;
-	top:18px;
+	top:0px;
 	right:50px;
 	margin:0;
-	padding:0;
+	padding: 30px 0;
+	width: 70px;
 	font-size: 15px;
 	border-radius: 5px;
-	background-color: black;
+	text-align: center;
+}
 
+#login:hover{
+	background-color: black;
 }
 
 #signup{
-	background-color: black;
 	color:white;
 	position:absolute;
-	top:18px;
-	right:100px;
+	top:0px;
+	right:125px;
 	margin:0;
-	padding:0;
+	padding: 30px 0;
+	width: 70px;
 	font-size: 15px;
+	text-align: center;
+}
+
+#signup:hover{
+	background-color: black;
 }
 .gardenTitle{
 	position:absolute;
@@ -122,9 +142,11 @@ header p{
 }
 .group_tree,.group_bush,.group_grass,.group_paver,.group_flower{
 	height:70px;
+	line-height: 70px;
 	padding:5px;
 	background-color: #f2f2ea;
 	border:1px solid rgba(0, 0, 0, .2);
+	border-top: none;
 
 }
 .group_tree:hover,.group_bush:hover,.group_grass:hover,.group_paver:hover,.group_flower:hover{
@@ -132,6 +154,7 @@ header p{
 	padding:5px;
 	background-color: #de6161;
 	border:1px solid rgba(0, 0, 0, .2);
+	border-top: none;
 
 }
 .group_bush,.group_grass{
@@ -141,29 +164,25 @@ header p{
 
 .category{
 	width:100px;
-
-	border-left:solid 5px #de6262;
+	/*border-left:solid 5px #de6262;*/
 	/*padding-top: 10px;*/
 	background-color: #f2f2ea;
-
-
-	
 }
-
 
 .stencils{
 	list-style-type: none;
 	border-right: 2px solid rgba(0, 0, 0, .2);
 	height:550px;
-	margin:0pxlist-style-type: none;
+	margin:0px
+	list-style-type: none;
     border-right: 2px solid rgba(0, 0, 0, .2);
-    height: 550px;
-    padding-left: 20px;
+    /*padding-left: 20px;*/
     margin: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-right: 20px;
+    padding:0;
+    /*padding-right: 20px;*/
 
 
 }
@@ -185,6 +204,7 @@ header p{
     background-size: cover;
     margin:0;
     padding:0;
+    left-border: 5px solid yellow;
 
 }
 
@@ -250,23 +270,25 @@ header p{
 	width:90%;
 	padding:10px;
 	background-image: url("/images/site_image/grid.png");
-	margin-top:5px;px;
+	margin-top:-5px;
 	margin-left:35px;
 	margin-right:20px;
 	position: relative; 
 	/*flex:3;*/
 	border-radius: 3px;
-	border: 1px solid green;
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
 .title{
 	border-top: 5px solid #DD6264;
+	
 	color:black;
-	margin-left:-2px;
+	/*margin-left:-2px;*/
 	padding-left:5px;
+	padding-top:30px;
 	margin-top:0px;
 	background-color: #f7f6f2;
-	height:40px;
+	height:70px;
 	text-align: left;
 	border-bottom: 1px solid rgba(0, 0, 0, .2);
 
@@ -274,31 +296,29 @@ header p{
 }
 #clearbutton{
 	position:absolute;
-	top:100px;
+	top:130px;
 	right:40px;
 }
 #printbutton{
 	position:absolute;
-	top:100px;
+	top:130px;
 	right:120px;
 }
 #openbutton{
 	position:absolute;
-	top:100px;
+	top:130px;
 	right:280px;
 }
 #btnSave{
 	position:absolute;
-	top:100px;
+	top:130px;
 	right:200px;
 }
 .gardensub	title{
 	margin-top:25px;
 
 }
-.tree_active{
-	
-}
+
 
 
 footer{
@@ -323,30 +343,45 @@ footer p{
 	color:white;
 	font-size: 18px;
 }
+#tree_button{
+	border-left:5px solid yellow;
+}
 
 #tree_button.selected{
 
-	background-color: #f48989;
+	background-color: yellow;
 	border-left:1px solid green;
+}
+#bush_button{
+	border-left:5px solid #ea3353;
 }
 #bush_button.selected{
 
-	background-color: #a54c4c;
+	background-color: #ea3353;
 	border-left:green;
+}
+#flower_button{
+	border-left:5px solid #11af66;
 }
 #flower_button.selected{
 
-	background-color: #de6161;
+	background-color: #11af66;
 	border-left:green;
+}
+#paver_button{
+	border-left:5px solid orange;
 }
 #paver_button.selected{
 
-	background-color: #6b3838;
+	background-color: orange;
 	border-left:green;
+}
+#grass_button{
+	border-left:5px solid #625da9;
 }
 #grass_button.selected{
 
-	background-color: #c69f9f;
+	background-color: #625da9;
 	border-left:green;
 }
 
@@ -436,4 +471,18 @@ footer p{
 	position:absolute;
 	top:100px;
 	left:150px;
+}
+
+.gardensubtitle{
+
+	width:200px;
+	height:30px;
+}
+
+.stencil{
+
+border-bottom:1px solid rgba(0, 0, 0, .2);;
+width:130px;
+padding-left:15px;
+
 }
