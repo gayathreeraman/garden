@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\user;
+use App\Models\item;
 use App\Models\garden;
 use App\Models\gardenItem;
 
 class GardenController extends Controller{
+
+	public function home(Request $request){
+
+		$garden = new Garden();
+		
+		return view ('home', ['garden' => $garden, 'items' => []]);
+	}
 
 	public function viewAll(Request $request){
 		//request is used to get the current user id.
@@ -26,8 +34,10 @@ class GardenController extends Controller{
 	public function view($garden_id){
 
 		$garden = Garden::get($garden_id);
+		$items = Item::getGardenItems($garden_id);
 
-		return view('home',['garden'=>$garden]);
+
+		return view('home',['garden'=>$garden,'items'=>$items]);
 	}
 
 
@@ -37,29 +47,29 @@ class GardenController extends Controller{
 
 	 	//if we have an inout id- the garden already exist
 
-	 	 $layout_name = $request->input('gardenName');
-	 	// echo $layout_name;
-	 	$user = $request->user();
+		$layout_name = $request->input('gardenName');
+		$garden_id = $request->input('garden_id');
 
-
-
+		// echo $layout_name;
+		$user = $request->user();
 	 	if($user == null){
 	 		return response()->json(["message"=>"No User"], 401); 
 	 	}
- 		$garden = null;
- 		$garden_id = $request->input('garden_id');
-	 	// echo $layout_name;
 
- 		if($garden_id){
+	 	
+
+ 		if($garden_id > 0){
  			$garden = Garden::get($garden_id);
  		} else{
 		 	$garden = new Garden();
-			$garden->user_id = $user->id;
-
+	 		$garden->user_id = $user->id;
  		}
 
 
+
 		$garden->layout_name= $request->input('gardenName');
+
+		
 		$garden->save();
 		$garden->deleteAllItems();
 		//Need to delete any existing items
@@ -84,12 +94,36 @@ class GardenController extends Controller{
 	 	return $garden_id; 
 	 }
 
+
+
 	 public static function delete($garden_id) {
 		Garden::delete($garden_id);
 
-		return redirect("/");
+		return redirect("/garden");
 		
 	}
+
+
+	 //   public function update(garden_id){
+
+	 //   	$garden = new Garden($garden_id);
+
+		// return view("home",["garden"=>$garden]);
+	 //   }
+
+	// public function postUpdate($garden_id) {
+	// 	$garden = Garden::get($garden_id);
+	// 	print_r($garden->layout_name);
+	// 	$garden->layout_name = Request::input('layout_name');
+
+		
+	// 	$garden->save();
+	// 	return redirect("home");
+		
+		
+	// }
+
+	
 
 	
 }

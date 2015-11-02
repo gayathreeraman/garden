@@ -14,7 +14,7 @@
 
         
 </head>
-<body>
+<body class="savedlayout">
      
         <header>
             <p>Better Gardens <div ><img  class="logo" src='/images/site_image/Logo3.png'></div></p>	
@@ -40,7 +40,7 @@
     <div>
     
     <div>
-		<h2>My Garden</h2>
+		<p class="savedgarden">My Garden<p>
 
 		<table>
 		    <tr>
@@ -54,11 +54,11 @@
 
 			<tr>
 		    	<td>{{$garden->garden_id}} </td>
-		        {{-- <td><a href="gardens/{{$garden->garden_id}}">{{$garden->layout_name}}</a></td> --}}
+		        <td><a href="/garden/{{$garden->garden_id}}">{{$garden->layout_name}}</a></td> 
 		        
-		        <td>{{$garden->layout_name}}</td>
+		        {{-- <td>{{$garden->layout_name}}</td> --}}
 		        <td>{{$garden->date_created}}</td>
-		        <td><a href=" ">Edit</a></td> 
+		        <td><a href="/">Edit</a></td> 
 		        <td><a href="garden/{{$garden->garden_id}}/delete">Delete</a></td>
 
 		    </tr>

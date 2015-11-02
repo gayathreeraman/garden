@@ -10,7 +10,7 @@
     
 
 </head>
-<body>
+<body class="registerbody">
 <header>
             <p>Better Gardens <div ><img  class="logo" src='/images/site_image/Logo3.png'></div></p>
             <div class="headerlogin">
@@ -30,48 +30,69 @@
         </header>
     
     <body>
+      <div >
 
-        <div class="logininfo">
-            <div class="registerinfo">
-            <form method="POST" action="/auth/register">
-    {!! csrf_field() !!}
+          <div class="logininfo">
+           <div class="loginheader"></div>
+              <div class="registerinfo">
+              <form method="POST" action="/auth/register">
+                {!! csrf_field() !!}
+                      
+                          <div>
+                            <div class="fn">First Name:</div>
+                            <div class="fninput"><input type="text" name="firstname" value="{{ old('firstname') }}" size="35">@if(count($errors) > 0)
+                            @if(count($errors->getBags()['default']->get('firstname'))>0)
+                                <span>
+                                    {{$errors->getBags()['default']->get('firstname')[0]}}
+                                </span>
+                              @endif 
+                              @endif</div>
+                          </div>
+                          
+                      
+                          <div>
+                            <div class="ln">Last Name:</div>
+                         
+                            <div class="lninput"><input type="text" name="lastname" value="{{ old('lastname') }}" size="35">@if(count($errors) > 0)
+                            @if(count($errors->getBags()['default']->get('lastname'))>0)
+                                <span>
+                                    {{$errors->getBags()['default']->get('lastname')[0]}}
+                                </span>
+                              @endif 
+                              @endif</div>
+                          </div>
+                          
+                          <div>
+                            <div class="em">Email:</div>
+                            <div class="eminput"><input type="email" name="email" value="{{ old('email') }}" size="35">@if(count($errors) > 0)
+                            @if(count($errors->getBags()['default']->get('email'))>0)
+                                <span>
+                                    {{$errors->getBags()['default']->get('email')[0]}}
+                                </span>
+                              @endif 
+                              @endif
+                              </div>
+                          </div>
 
-            
-                    
-                        <div class="fn">First Name
-                        <input type="text" name="firstname" value="{{ old('firstname') }}"></div>
-                        
-                    
-                        <div>Last Name
-                       
-                            <input type="text" name="lastname" value="{{ old('lastname') }}"></div>
-                        
-                        <div>Email
-                        
-                            <input type="email" name="email" value="{{ old('email') }}">@if(count($errors) > 0)
-                        @if(count($errors->getBags()['default']->get('email'))>0)
-                            <span>
-                                {{$errors->getBags()['default']->get('email')[0]}}
-                            </span>
-                        @endif 
-                     @endif
-                        </div>
-                    
-                        <div> Password
-                        <input type="password" name="password"></div>
-                    
-                   <div> Confirm Password
-                       <input type="password" name="password_confirmation"></div>
-                    
-                           <button type="submit">Register</button>
-                            </div>
-                            </div>
+                          <div>
+                            <div class="pwd"> Password:</div>
+                            <div class="pwdinput"><input type="password" name="password" size="35"></div>
+                          </div>
+                      
+                          <div>
+                            <div class="cpwd"> Confirm Password:</div>
+                            <div class="cpwdinput"><input type="password" name="password_confirmation" size="35"></div>
+                          </div>
+                      
+                             <div class="registerbutton"><button type="submit">Register:</button></div>
+                              </div>
+                              </div>
 
-                            </div>
+                              </div>
 
-            </form>
-        </div>
-          
+              </form>
+          </div>
+         </div> 
     </body>
 </html>
 

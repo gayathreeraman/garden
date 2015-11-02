@@ -5,6 +5,8 @@ use DB;
 class Garden {
 	protected static $table ="garden" ;
 
+	public $layout_name;
+
 	public static function getAll($user_id){
 		
 		$sql = " SELECT * FROM garden where user_id = :user_id";
@@ -18,7 +20,7 @@ class Garden {
 			$gardens[] = $row;
 		}
 
-		// print_r($gardens);
+		 //print_r($gardens);
 		return $gardens;
 	}
 
@@ -29,10 +31,12 @@ class Garden {
 		$row = DB::selectOne($sql,[':garden_id'=> $garden_id]);
 
 		$garden = new Garden();
-		$garden->user_id = $row->user_id;
-		$garden->garden_id = $row->garden_id;
 		$garden->layout_name = $row->layout_name;
+		$garden->garden_id = $row->garden_id;
+		$garden->user_id = $row->user_id;
 		$garden->date_created = $row->date_created;
+
+		
 		return $garden;
 	}
 	

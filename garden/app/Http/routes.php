@@ -16,9 +16,7 @@
 // 	return view ('home');
 // }]);
 
-Route::get('/',function(){
- 	return view ('home');
- });
+Route::get('/','GardenController@home');
 
 // Route::get('/', function () {
 	
@@ -56,5 +54,10 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+
+// Route::get('/', 'GardenController@update');
+// Route::post('/', 'GardenController@postUpdate');
+
 Route::get('garden/{id}/delete', 'GardenController@delete');
+
 

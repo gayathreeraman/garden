@@ -132,7 +132,7 @@ $(function(){
 
 		var thisLeft = ($(this).offset().left)
 		//var thisTop = $(this).offset().top + $(dragEl).outerHeight()
-		var thisTop = $(this).offset().top + 35
+		var thisTop = $(this).offset().top + $(dragEl).outerHeight()/2
 		$('.target').append(dragEl)
 
 		dragEl.css({
@@ -199,12 +199,19 @@ $(function(){
 
 	
 
+	var garden_id = 0;
+
 	$('#btnSave').click(function(){
 		var data = {
 			gardenName: $(".gardensubtitle").val()
 		};
 
-		if (garden_id){
+		if(window.location.href.split("/")[4]){
+			garden_id = window.location.href.split("/")[4];	
+		}
+		
+
+		if(garden_id >0){
 			data.garden_id = garden_id;
 		}
 

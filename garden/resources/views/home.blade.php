@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+   
+
+
 
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-    <script src="js/dragdrop.js"></script>
+    <script src="/js/dragdrop.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script>
-        garden_id = false;
+        
         $(function(){
             $.ajaxSetup({
                 headers: {
@@ -35,7 +38,7 @@
                 </div>
             </p>
 
-            <div class="headerlogin">
+            <div>
 
                 @if(!Auth::User())
                     <a href="/auth/login">
@@ -64,7 +67,7 @@
                 <div class="palette">
 
                     <div class="category">
-                        <div class="group_tree" id="tree_button">Tree</div>
+                        <div class="group_tree" id="tree_button">Tree</i></div>
                         <div class="group_bush" id="bush_button">Bush</div>
                         <div class="group_flower"id="flower_button">Flower</i></div>
                         <div class="group_grass" id="grass_button">Grass</i></div>
@@ -84,17 +87,18 @@
                     <div class="title">
                     {{--  //todo --}}
 
-                        Garden Title <input class="gardensubtitle" type="text" name="title" value="" placeholder="Garden Title">
+
+                        Garden Title <input class="gardensubtitle" type="text" name="title" value="{{$garden->layout_name}}" placeholder="Garden Title">
                
                             <ul>
-                                <li class="navBar"><div id="clearbutton">Clear</div></li>
-                                <li class="navBar"><div id="printbutton">Print</div></li>
+                                <li class="navBar"><div id="clearbutton"><i class="fa fa-minus-square"></i></div></li>
+                                <li class="navBar"><div id="printbutton"><i class="fa fa-print"></i></div></li>
                                 @if(Auth::User())
-                                <a href="/garden"><li class="navBar"><div id="openbutton">Open</div></li></a>
+                                <a href="/garden"><li class="navBar"><div id="openbutton"><i class="fa fa-folder-open"></i></div></li></a>
                                 @endif
                                 {{-- <li class="navBar"><button>Sample Layout</button></li> --}}
                                 @if(Auth::User())
-                               <li class="navBar"><div class="lb-btn"><div id="btnSave">Save</div></li>
+                               <li class="navBar"><div class="lb-btn"><div id="btnSave"><i class="fa fa-floppy-o"></i></div></li>
                                  @endif
                             </ul>
 
@@ -103,7 +107,29 @@
 
                     <div id="dvContainer">
 
-                        <div id="divLayout" class="target"></div>
+                        <div id="divLayout" class="target">
+                            
+                            
+                            @foreach ($items as $item)
+
+
+                                <div '#drag-item'="" class="drag-item {{$item->category}}" draggable="true" style="position: absolute; top: {{$item->coordinate_y}}px; left: {{$item->coordinate_x}}px;">
+                                    <img class="tree" src="{{$item->image_file_path}}" alt="Banana" itemid="2">
+                                </div>
+
+                            @endforeach
+                            
+
+                           {{--  <div '#drag-item'="" class="drag-item grass" draggable="true" style="position: absolute; top: 55px; left: 485px;">
+                                <img class="grass" src="/images/site_image/grass4.png" alt="Winter grass" itemid="20">
+                            </div>
+                     
+                            <div '#drag-item'="" class="drag-item bush" draggable="true" style="position: absolute; top: 282px; left: 447px;">
+                                <img class="bush" src="/images/site_image/bush1.png" alt="Barberry" itemid="5">
+                            </div> --}}
+
+                        </div>
+                       
 
                     </div>
                         
