@@ -19,6 +19,7 @@ body{
     user-select: none;
 	margin:0;
 	padding:0;
+	color:#767675;
 
 
 	
@@ -100,17 +101,19 @@ header p{
 	margin-right:20px;
 	position: fixed; 
 	top:100px;
-	left:100px;
+	left:50px;
 	border-radius: 3px;
-	border: 10px solid #dd6264;
+	border:1px solid rgba(0, 0, 0, .2);
+	border-top: 10px solid #dd6264;
+
 	color:black;
 	background-color: #F2F2EA;
 }
 .logintable{
 
 	position:fixed;
-	top:200px;
-	left:300px;
+	top:170px;
+	left:130px;
 	text-align: left;
 }
 
@@ -134,7 +137,7 @@ header p{
 }
 
 .loginheader{
-
+color
 	height:70px;
 	width:100%;
 	background-color:#373737;
@@ -217,11 +220,9 @@ Palette
 
 }
 .group_tree:hover,.group_bush:hover,.group_grass:hover,.group_paver:hover,.group_flower:hover{
-	height:70px;
-	padding:5px;
+
 	background-color: #de6161;
-	border:1px solid rgba(0, 0, 0, .2);
-	border-top: none;
+
 
 }
 
@@ -299,8 +300,9 @@ Palette
 	height:30px;
 	width:100%;
 	background-color: #26333d;
-	color:black;
+	/*color:black;*/
 }
+
 
 .menuBar > ul{
 	margin:0px;
@@ -396,7 +398,7 @@ Palette
 .title{
 	border-top: 5px solid #DD6264;
 	
-	color:black;
+	/*color:black;*/
 	/*margin-left:-2px;*/
 	padding-left:5px;
 	padding-top:30px;
@@ -411,16 +413,15 @@ Palette
 #clearbutton,#printbutton,#openbutton,#btnSave{
 	
 	font-size: .7em;
-	background-color:#DD6264;
+	background-color:#EAEAE2;
 	height:25px;
 	width:50px;
 	text-align: center;
 	line-height: 25px;
 	cursor: pointer;
 
-
-
 }
+
 #clearbutton{
 	position:absolute;
 	top:120px;
@@ -471,7 +472,7 @@ footer p{
 
 
 
-.lightbox {
+/*.lightbox {
 	width: 500px;
 	height: 300px;
 
@@ -486,12 +487,13 @@ footer p{
 .lb-open{
 	display:block;
 }
-
+*/
 
 .gardensubtitle{
 
 	width:200px;
 	height:30px;
+	background-color:#EAEAE2;
 }
 
 .stencil{
@@ -511,7 +513,7 @@ width:700px;
 	padding-top: 15px;
 }
 .loginbody,.registerbody,.savedlayout{
-	background-color: #f2f2ea;
+	background-color: #f2f2f0;
 }
 table{
 	margin:0 auto;
@@ -532,11 +534,20 @@ th{
 
 @media print { 
  
- 	.target{
- 		width:100%;
-		height:100%;
- 	}
+ 	
 
+	header{
+		display:none;
+	}
+	footer{
+		display:none;
+	}
+	.palette{
+		display:none;
+	}
+	.title{
+		display:none;
+	}
 }
 
 
