@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-   
+    <link rel="stylesheet" type="text/css" href="print.css" media="print" />
 
 
 
@@ -42,10 +42,12 @@
 
                 @if(!Auth::User())
                     <a href="/auth/login">
-                        <div id="login">Login</div>
+                        <div id="login"> Login</div>
                     </a>
                 @else
+                    <div class="userfnln">{{auth::user()->firstname}}  {{auth::user()->lastname}}</div>
                     <a href="/auth/logout">
+
                         <div id="login">Logout</div>
                     </a>
                 @endif
@@ -55,6 +57,7 @@
                         <div id="signup">Sign Up</div>
                     </a>
                 @endif
+                
 
             </div>
 
@@ -91,14 +94,14 @@
                         Garden Title <input class="gardensubtitle" type="text" name="title" value="{{$garden->layout_name}}" placeholder="Garden Title">
                
                             <ul>
-                                <li class="navBar"><div id="clearbutton"><i class="fa fa-minus-square"></i></div></li>
-                                <li class="navBar"><div id="printbutton"><i class="fa fa-print"></i></div></li>
+                                <li class="navBar"><button id="clearbutton"><i class="fa fa-minus-square"></i></button></li>
+                                <li class="navBar"><button id="printbutton"><i class="fa fa-print"></i></button></li>
                                 @if(Auth::User())
-                                <a href="/garden"><li class="navBar"><div id="openbutton"><i class="fa fa-folder-open"></i></div></li></a>
+                                <a href="/garden"><li class="navBar"><button id="openbutton"><i class="fa fa-folder-open"></i></button></li></a>
                                 @endif
                                 {{-- <li class="navBar"><button>Sample Layout</button></li> --}}
                                 @if(Auth::User())
-                               <li class="navBar"><div class="lb-btn"><div id="btnSave"><i class="fa fa-floppy-o"></i></div></li>
+                               <li class="navBar"><div class="lb-btn"><button id="btnSave"><i class="fa fa-floppy-o"></i></button></li>
                                  @endif
                             </ul>
 

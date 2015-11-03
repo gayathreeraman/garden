@@ -2,7 +2,7 @@
 	font-family: 'Alegreya Sans', sans-serif;
 	margin:0;
 	padding:0;
-	font-size: 20px;
+	font-size: 18px;
 	
 }
 
@@ -84,10 +84,17 @@ header p{
 	background-color: black;
 }
 
+.userfnln{
+	color:white;
+	position:absolute;
+	top:30px;
+	right:160px;
+	color:#DD6264;
+}
 /*--------------------*/
 .logininfo{
 	height:450px;
-	width:900px;
+	width:700px;
 	margin-top:5px;px;
 	margin-left:35px;
 	margin-right:20px;
@@ -114,6 +121,7 @@ header p{
 }
 .inputemail,.inputpw{
 	height:20px;
+
 }
 
 .loginbutton1{
@@ -137,7 +145,8 @@ header p{
 
 	position:absolute;
 	top:100px;
-	left:150px;
+	left:50px;
+	
 }
 
 /*----------------------------------
@@ -189,6 +198,10 @@ Palette
 .category{
 	width:100px;
 	background-color: #f2f2ea;
+}
+
+.category div {
+	cursor: pointer;
 }
 
 .group_tree,.group_bush,.group_grass,.group_paver,.group_flower{
@@ -257,6 +270,7 @@ Palette
 .infoitem{
 	margin:0;
 	padding:0;
+	 cursor: move; 
 }
 
 .stencils{
@@ -374,7 +388,7 @@ Palette
 	margin-left:35px;
 	margin-right:20px;
 	position: relative; 
-	/*flex:3;*/
+	cursor: move;
 	border-radius: 3px;
 	border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
@@ -402,6 +416,7 @@ Palette
 	width:50px;
 	text-align: center;
 	line-height: 25px;
+	cursor: pointer;
 
 
 
@@ -430,6 +445,8 @@ Palette
 	right:190px;
 	
 }
+
+
 .gardensub	title{
 	margin-top:25px;
 
@@ -487,7 +504,7 @@ border-bottom:1px solid rgba(0, 0, 0, .2);
 .fn,.fninput,.ln,.lninput,.em,.eminput,.pwd,.pwdinput,.cpwd,.cpwdinput{
 display:inline-block;
 padding-top: 5px;
-width:200px;
+width:700px;
 }
 
 .registerbutton{
@@ -511,4 +528,18 @@ th{
 .savedgarden{
 	font-size:25px;
 	text-align: center;
+}
+
+@media print { 
+ 
+ 	.target{
+ 		width:100%;
+		height:100%;
+ 	}
+
+}
+
+
+.fnerror, .fnname{
+	display:inline-block;
 }

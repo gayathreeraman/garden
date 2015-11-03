@@ -40,13 +40,16 @@
                       
                           <div>
                             <div class="fn">First Name:</div>
-                            <div class="fninput"><input type="text" name="firstname" value="{{ old('firstname') }}" size="35">@if(count($errors) > 0)
-                            @if(count($errors->getBags()['default']->get('firstname'))>0)
-                                <span>
-                                    {{$errors->getBags()['default']->get('firstname')[0]}}
-                                </span>
-                              @endif 
-                              @endif</div>
+                            <div class="fninput">
+                              <input type="text" name="firstname" value="{{ old('firstname') }}" size="35">
+                                  
+                                     @if(count($errors) > 0)
+                                        @if(count($errors->getBags()['default']->get('firstname'))>0)
+                                            <span>{{$errors->getBags()['default']->get('firstname')[0]}}</span>
+                                        @endif 
+                                      @endif
+                                  
+                            </div>
                           </div>
                           
                       
@@ -76,7 +79,13 @@
 
                           <div>
                             <div class="pwd"> Password:</div>
-                            <div class="pwdinput"><input type="password" name="password" size="35"></div>
+                            <div class="pwdinput"><input type="password" name="password" size="35">@if(count($errors) > 0)
+                            @if(count($errors->getBags()['default']->get('password'))>0)
+                                <span>
+                                    {{$errors->getBags()['default']->get('password')[0]}}
+                                </span>
+                              @endif 
+                              @endif</div>
                           </div>
                       
                           <div>

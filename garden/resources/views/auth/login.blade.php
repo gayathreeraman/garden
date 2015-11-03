@@ -33,6 +33,7 @@
 
             <div class="logininfo">
                 <div class="loginheader"></div>
+
                 <form method="POST" action="/auth/login">
                     {!! csrf_field() !!}
 
@@ -40,6 +41,8 @@
         
             <div>
                 <div class="logintable">
+                <br>
+                <br>
                     <div class="loginemail">Email</div>
                         <div>
                             <input class="inputemail" type="email" name="email" value="{{ old('email') }}" size="35" >
