@@ -204,7 +204,9 @@ $(function(){
 	$('#btnSave').click(function(){
 		var data = {
 			gardenName: $(".gardensubtitle").val()
+
 		};
+
 
 		if(window.location.href.split("/")[4]){
 			garden_id = window.location.href.split("/")[4];	
@@ -254,6 +256,7 @@ $(function(){
 				.done(function(response){
 					console.log(data); 
 					console.log('Item Saved' + response);
+					alert("Congrats");
 				})
 				.fail(function(response) {
 					console.log( "error" + response );
@@ -264,6 +267,8 @@ $(function(){
 		})	
 		.fail(function() {
 			console.log( "error" );
+			 // alert("Enter the Title");
+			 $('span.garden-title-error').addClass('on');
 		});	
 	});
 
@@ -395,16 +400,7 @@ $(function(){
 
 	 $("#printbutton").on("click", function () {
 	 	window.print()
- //            var divContents = $("#dvContainer").html();
- //            var 
- //             printWindow = 
- //             window.open('', '', 'height=800,width=1000');
- //            printWindow.document.write('<html><head><title>DIV Contents</title>');
- //            //printWindow.document.write('</head><body >');
- //            printWindow.document.write(divContents);
- //            printWindow.document.write('</body></html>');
- //        	//printWindow.document.close();
- //            printWindow.print();
+             
          });
 
 

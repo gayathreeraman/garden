@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use DB;
+use App\Models\garden_item;
 
 class Garden {
 	protected static $table ="garden" ;
@@ -29,6 +30,11 @@ class Garden {
 
 		$sql = "SELECT * FROM garden where garden_id = :garden_id";
 		$row = DB::selectOne($sql,[':garden_id'=> $garden_id]);
+
+		if(!$row){
+			return null;
+		}
+
 
 		$garden = new Garden();
 		$garden->layout_name = $row->layout_name;
@@ -79,10 +85,17 @@ class Garden {
 
 
  	public static function delete($garden_id){
- 	$sql = "DELETE from garden where garden_id = :garden_id";
-         DB::delete($sql,[':garden_id'=> $garden_id]);   
+ 		$sql = "DELETE from garden where garden_id = :garden_id";
+        DB::delete($sql,[':garden_id'=> $garden_id]);   
+
+        $sql = "DELETE from garden_item where garden_id = :garden_id";
+        DB::delete($sql,[':garden_id'=> $garden_id]);   
  	}
 
+	// public static function delete($garden_id){
+	//  	$sql = "DELETE from garden ,garden_item where  garden.garden_id = garden_item.garden_id  and garden.garden_id = :garden_id";
+	//          DB::delete($sql,[':garden_id'=> $garden_id]);   
+	//  	}
 
 	
 	

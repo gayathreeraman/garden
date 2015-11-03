@@ -32,12 +32,18 @@ class GardenController extends Controller{
 
 
 	public function view($garden_id){
-
+		
 		$garden = Garden::get($garden_id);
 		$items = Item::getGardenItems($garden_id);
+		if($garden === null){
 
+			return view('error');
+		}else
+		{ 
+			return view('home',['garden'=>$garden,'items'=>$items]);
+		}
 
-		return view('home',['garden'=>$garden,'items'=>$items]);
+		
 	}
 
 
@@ -47,7 +53,7 @@ class GardenController extends Controller{
 
 	 	//if we have an inout id- the garden already exist
 
-		$layout_name = $request->input('gardenName');
+		$layout_name = trim($request->input('gardenName'));
 		$garden_id = $request->input('garden_id');
 
 		// echo $layout_name;
@@ -55,7 +61,9 @@ class GardenController extends Controller{
 	 	if($user == null){
 	 		return response()->json(["message"=>"No User"], 401); 
 	 	}
-
+	 	if($layout_name == null || $layout_name == ""){
+	 		return response()->json(["message"=>"No Title"], 401); 
+	 	}
 	 	
 
  		if($garden_id > 0){

@@ -91,7 +91,8 @@
                     {{--  //todo --}}
 
 
-                        Garden Title <input class="gardensubtitle" type="text" name="title" value="{{$garden->layout_name}}" placeholder="Garden Title">
+                        Garden Title <input class="gardensubtitle" type="text" name="title" value="{{$garden->layout_name}}" placeholder="Garden Title" required>
+                        <span class="garden-title-error">Please give a name to your garden</span>
                
                             <ul>
                                 <li class="navBar"><button id="clearbutton"><i class="fa fa-minus-square"></i></button></li>
