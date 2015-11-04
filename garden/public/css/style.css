@@ -8,7 +8,7 @@
 
 body{
 	/*-webkit-zoom-in
-	-webkit-zoom-out
+	-webkit-zoom-out*/
 	-webkit-grab
 	-webkit-grabbing
 	-webkit-touch-callout: none;
@@ -16,20 +16,46 @@ body{
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;*/
+    user-select: none;
 	margin:0;
 	padding:0;
 	color:#767675;
 
-
-	
 }
+
 a:visited{
  color: black; 
  text-decoration: none;
-  
-
 }
+
+@media print { 
+ 
+ 	
+
+	header{
+		display:none;
+	}
+	footer{
+		display:none;
+	}
+	.palette{
+		display:none;
+	}
+	.title{
+		display:none;
+	}
+	.trashLayout{
+		display:none;
+	}
+	.divLayout {
+		background: none;
+	}
+
+	#img{
+		display:block;
+	}
+}
+
 
 /*-----------------------------------
 Header
@@ -112,8 +138,8 @@ header p{
 .logintable{
 
 	position:fixed;
-	top:170px;
-	left:130px;
+	top:160px;
+	left:135px;
 	text-align: left;
 }
 
@@ -207,7 +233,7 @@ Palette
 	cursor: pointer;
 }
 
-.group_tree,.group_bush,.group_grass,.group_paver,.group_flower{
+.group_tree,.group_bush,.group_grass,.group_paver,.group_flower,.group_gravel,.group_raisedbed{
 	height:70px;
 	line-height: 70px;
 	padding:5px;
@@ -216,62 +242,109 @@ Palette
 	border-top: none;
 	border-right: none;
 	padding:0;
+	color:black
 	
 
 }
-.group_tree:hover,.group_bush:hover,.group_grass:hover,.group_paver:hover,.group_flower:hover{
 
-	background-color: #de6161;
+.group_tree:hover{
+	background-color: yellow;
+
+}
+.group_bush:hover{
+
+	background-color: #ea3353;
 
 
 }
+.group_grass:hover{
 
+	background-color: #625da9;
+
+
+}
+.group_paver:hover{
+
+	background-color: orange;
+
+
+}
+.group_flower:hover{
+
+	background-color: #11af66;
+}
+.group_gravel:hover{
+
+	background-color: brown;
+}
+.group_raisedbed:hover{
+
+	background-color: blue;
+}
 #tree_button{
 	border-left:5px solid yellow;
 }
 
-#tree_button.selected{
+/*#tree_button.selected{
 
 	background-color: yellow;
 	border-left:1px solid green;
-}
+}*/
 #bush_button{
 	border-left:5px solid #ea3353;
 }
-#bush_button.selected{
+/*#bush_button.selected{
 
 	background-color: #ea3353;
-	border-left:green;
-}
+	
+}*/
 #flower_button{
 	border-left:5px solid #11af66;
 }
-#flower_button.selected{
+/*#flower_button.selected{
 
 	background-color: #11af66;
-	border-left:green;
-}
+	
+}*/
 #paver_button{
 	border-left:5px solid orange;
 }
-#paver_button.selected{
+/*#paver_button.selected{
 
 	background-color: orange;
-	border-left:green;
-}
+	
+}*/
 #grass_button{
 	border-left:5px solid #625da9;
 }
-#grass_button.selected{
+/*#grass_button.selected{
 
 	background-color: #625da9;
-	border-left:green;
+	
+}*/
+#gravel_button{
+	border-left:5px solid brown;
 }
+/*#gravel_button.selected{
+
+	background-color: #brown;
+	
+}*/
+#raisedbed_button{
+	border-left:5px solid blue;
+}
+/*#raisedbed_button.selected{
+
+	background-color: blue;
+	
+}*/
 
 .infoitem{
-	margin:0;
-	padding:0;
-	 cursor: move; 
+	margin:0px;
+	padding:0px;
+	cursor: move; 
+	overflow:scroll;
+	width:100px;
 }
 
 .stencils{
@@ -325,33 +398,33 @@ Palette
 .tree  {
 	width: 100px;
 	height: 100px;
-    background-size: cover;
+    /*background-size: cover;*/
     margin:0;
     padding:0;
-    left-border: 5px solid yellow;
+    
 
 }
 
 .bush  {
-    width: 90px;
-	height:90px;
-    background-size: cover;
+    width: 80px;
+	height:80px;
+    /*background-size: cover;*/
      margin:0;
     padding:0;
     
 }
 .flower{
-    width: 50px;
-	height:50px;
-    background-size: cover;
+    width: 80px;
+	height:80px;
+    /*background-size: cover;*/
      margin:0;
     padding:0;
 }
 .paver{
 
-    width: 60px;
-	height:60px;
-    background-size: cover;
+    width: 90px;
+	height:90px;
+    /*background-size: cover;*/
      margin:0;
     padding:0;
     
@@ -360,7 +433,21 @@ Palette
 .grass  {
 	width: 100px;
 	height:100px;
-    background-size: cover;
+    /*background-size: cover;*/
+    margin:0;
+    padding:0;
+}
+.gravel  {
+	width: 100px;
+	height:100px;
+    /*background-size: cover;*/
+    margin:0;
+    padding:0;
+}
+.raisedbed  {
+	width: 100px;
+	height:100px;
+    /*background-size: cover;*/
     margin:0;
     padding:0;
 }
@@ -370,10 +457,10 @@ Palette
 
 .trashLayout{
 	position:absolute;
-	top:510px;
-	height:50px;
+	top:190px;
+	height:40px;
 	width:40px;
-	left:35px;
+	right:14px;
 	font-size: 50px;
 	/*background: url('/images/site_image/trash.png');*/
 	background-repeat: no-repeat;
@@ -392,7 +479,6 @@ Palette
 	position: relative; 
 	cursor: move;
 	border-radius: 3px;
-	border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
 .title{
@@ -455,39 +541,72 @@ Palette
 
 
 
-footer{
-	height:120px;
-	width:100%;
-	background-color:#373737;
-	color:white;
-	padding-top: 40px;
-}
-footer p{
-	
-	margin:0 auto;
-	width:70%;
-	color:white;
-	font-size: 18px;
-}
+
 
 
 
 .lightbox {
-	width: 500px;
-	height: 300px;
-
-	border: 1px solid #aaa;
-	background-color: red;
-	position: fixed;
-	left: 50%;
-	top: 50%;
+	width: 200px;
+	height: 50px;
+	position: absolute;
+	left: 700px;
+	top: 135px;
 	transform: translate(-50%, -50%);
-	/*display:none;*/
+	/*padding:60px;*/
+	opacity:0;
+	visibility:hidden;
+	border:1px solid rgba(0, 0, 0, .2);
+	border: 10px solid #dd6264;
+
+	color:black;
+	background-color: #F2F2EA;
 }
-/*.lb-open{*/
-	display:block;
+.lb-open{
+	
+	opacity:1;
+	visibility:visible;
 }
-*/
+.lb-close{
+	position:absolute;
+	right:-10px;
+	top:-10px;
+	
+}
+
+.t-error {
+	width: 200px;
+	height: 50px;
+	position: absolute;
+	left: 700px;
+	top: 135px;
+	transform: translate(-50%, -50%);
+	/*padding:60px;*/
+	opacity:0;
+	visibility:hidden;
+	border:1px solid rgba(0, 0, 0, .2);
+	border: 10px solid #dd6264;
+
+	color:black;
+	background-color: #F2F2EA;
+}
+.t-error-open{
+	
+	opacity:1;
+	visibility:visible;
+}
+.t-error-close{
+	position:absolute;
+	right:-12px;
+	top:-12px;
+	
+}
+
+
+
+
+
+
+
 
 .gardensubtitle{
 
@@ -518,6 +637,7 @@ width:700px;
 table{
 	margin:0 auto;
 	margin-top: 30px;
+	color:black;
 }
 th,td{
 	padding:15px;
@@ -529,45 +649,34 @@ th{
 }
 .savedgarden{
 	font-size:25px;
+	padding-top: 25px;
+	height:50px;
+	width:200px;
+	color:black;
+	background-color: grey;
+	margin:0 auto;
 	text-align: center;
+
 }
 
-@media print { 
- 
- 	
-
-	header{
-		display:none;
-	}
-	footer{
-		display:none;
-	}
-	.palette{
-		display:none;
-	}
-	.title{
-		display:none;
-	}
-	.trashLayout{
-		display:none;
-	}
-	.divLayout {
-		background: none;
-	}
-
-	#img{
-		display:block;
-	}
-}
 
 
 .fnerror, .fnname{
 	display:inline-block;
 }
 
-.garden-title-error{
-	display:none;
+footer{
+	height:120px;
+	width:100%;
+	background-color:#373737;
+	color:white;
+	padding-top: 40px;
 }
-.on{
-	display:inline-block;
+footer p{
+	
+	margin:0 auto;
+	width:70%;
+	color:white;
+	font-size: 18px;
 }
+

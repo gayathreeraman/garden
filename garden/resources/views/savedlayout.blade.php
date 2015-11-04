@@ -44,7 +44,7 @@
 
 		<table>
 		    <tr>
-		        <th>Number</th>
+		       
 		        <th>Garden Title</th>
 		        <th>Date Created</th>
 		        <th>Edit</th>
@@ -53,12 +53,12 @@
 		    @foreach($gardens as $garden)
 
 			<tr>
-		    	<td>{{$garden->garden_id}} </td>
+		    
 		        <td><a href="/garden/{{$garden->garden_id}}">{{$garden->layout_name}}</a></td> 
 		        
 		        {{-- <td>{{$garden->layout_name}}</td> --}}
 		        <td>{{$garden->date_created}}</td>
-		        <td><a href="/">Edit</a></td> 
+		        <td><a href="/garden/{{$garden->garden_id}}">Edit</a></td> 
 		        <td><a href="garden/{{$garden->garden_id}}/delete">Delete</a></td>
 
 		    </tr>

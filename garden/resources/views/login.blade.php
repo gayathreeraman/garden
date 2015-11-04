@@ -114,13 +114,28 @@
 
                     <div >
                        <tr><th> Password:</th>
-                       <th> <input class="inputpw" type="password" name="password" id="password">
+                       <th> <input class="inputpw" type="password" name="password" id="password">@if(count($errors) > 0)
+                        @if(count($errors->getBags()['default']->get('password'))>0)
+                            <span>
+                                {{$errors->getBags()['default']->get('password')[0]}}
+
+                            </span>
+                        @endif
+                        @endif
                     </div>
                     </th>
                     </table>
 
                     <div class="inputcb">
                         <input type="checkbox" name="remember"> Remember Me
+                        @if(count($errors) > 0)
+                        @if(count($errors->getBags()['default']->get('remember'))>0)
+                        <span>
+                            {{$errors->getBags()['default']->get('remember')[0]}}
+
+                        </span>
+                        @endif
+                    @endif
                     </div>
                     
                     <div class="inputlogin">

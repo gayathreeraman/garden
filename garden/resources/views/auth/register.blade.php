@@ -30,7 +30,7 @@
         </header>
     
     <body>
-      <div >
+      <div>
 
           <div class="logininfo">
            <div class="loginheader"></div>
@@ -38,7 +38,7 @@
               <form method="POST" action="/auth/register">
                 {!! csrf_field() !!}
                       
-                          <div>
+                          <div class="logintable">
                             <div class="fn">First Name:</div>
                             <div class="fninput">
                               <input type="text" name="firstname" value="{{ old('firstname') }}" size="35">

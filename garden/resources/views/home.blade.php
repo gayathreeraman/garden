@@ -32,11 +32,11 @@
     <body>
 
         <header>
-            <p>Better Gardens 
+              <a href="/"> <p>Better Gardens 
                 <div>
-                    <img  class="logo" src='/images/site_image/Logo3.png'>
+                 <img  class="logo" src='/images/site_image/Logo3.png'>
                 </div>
-            </p>
+            </p></a>
 
             <div>
 
@@ -65,21 +65,24 @@
 
         <div class="innerHero">  
 
-            <div class="article">
+            
+                <div class="article">
                 
-                <div class="palette">
+                    <div class="palette">
 
-                    <div class="category">
-                        <div class="group_tree" id="tree_button">Tree</i></div>
-                        <div class="group_bush" id="bush_button">Bush</div>
-                        <div class="group_flower"id="flower_button">Flower</i></div>
-                        <div class="group_grass" id="grass_button">Grass</i></div>
-                        <div class="group_paver" id="paver_button">Paver</i></div>
-                    </div>
+                        <div class="category">
+                            <div class="group_tree" id="tree_button">Tree</i></div>
+                            <div class="group_bush" id="bush_button">Bush</div>
+                            <div class="group_flower"id="flower_button">Flower</i></div>
+                            <div class="group_grass" id="grass_button">Grass</i></div>
+                            <div class="group_paver" id="paver_button">Paver</i></div>
+                            <div class="group_gravel" id="gravel_button">Gravel</i></div>
+                            <div class="group_raisedbed" id="raisedbed_button">Raisedbed</i></div>
+                        </div>
 
-                    <div class="infoitem">
-                        <ul class="stencils groups"></ul>
-                    </div>
+                        <div class="infoitem">
+                            <ul class="stencils groups"></ul>
+                        </div>
 
                 </div>
 
@@ -88,11 +91,9 @@
                 <div class="outertarget">
 
                     <div class="title">
-                    {{--  //todo --}}
-
-
                         Garden Title <input class="gardensubtitle" type="text" name="title" value="{{$garden->layout_name}}" placeholder="Garden Title" required>
-                        <span class="garden-title-error">Please give a name to your garden</span>
+                        <span class="t-error">Please give a name to your garden<button class="t-error-close"><i class="fa fa-times"></i></button></span>
+                        <span class="lightbox">Your Garden is Saved!!! <button class="lb-close"><i class="fa fa-times"></i></button></span>
                
                             <ul>
                                 <li class="navBar"><button id="clearbutton"><i class="fa fa-minus-square"></i></button></li>
@@ -115,22 +116,10 @@
                             
                             
                             @foreach ($items as $item)
-
-
                                 <div '#drag-item'="" class="drag-item {{$item->category}}" draggable="true" style="position: absolute; top: {{$item->coordinate_y}}px; left: {{$item->coordinate_x}}px;">
-                                    <img class="tree" src="{{$item->image_file_path}}" alt="Banana" itemid="2">
+                                    <img class="{{$item->img_css_class}}" src="{{$item->image_file_path}}" alt="{{$item->display_image_name}}" itemid="{{$item->item_id}}">
                                 </div>
-
                             @endforeach
-                            
-
-                           {{--  <div '#drag-item'="" class="drag-item grass" draggable="true" style="position: absolute; top: 55px; left: 485px;">
-                                <img class="grass" src="/images/site_image/grass4.png" alt="Winter grass" itemid="20">
-                            </div>
-                     
-                            <div '#drag-item'="" class="drag-item bush" draggable="true" style="position: absolute; top: 282px; left: 447px;">
-                                <img class="bush" src="/images/site_image/bush1.png" alt="Barberry" itemid="5">
-                            </div> --}}
 
                         </div>
                        

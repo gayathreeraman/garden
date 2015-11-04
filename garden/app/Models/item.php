@@ -16,7 +16,7 @@ class Item  {
 
 	public static function getGardenItems($garden_id){
 
-		$sql = "SELECT item.category,item.image_file_path ,garden_item.coordinate_x,garden_item.coordinate_y
+		$sql = "SELECT item.category,item.image_file_path,item.display_image_name,item.item_id,item.img_css_class,garden_item.coordinate_x,garden_item.coordinate_y
 		 FROM item,garden_item,garden 
 		 WHERE item.item_id = garden_item.item_id and
 		 garden.garden_id = garden_item.garden_id and

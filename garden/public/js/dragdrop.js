@@ -23,51 +23,69 @@ $(function(){
 	 	})
 
 
-	$('#tree_button').on('click',function(){
-		var siblings = $(this).siblings();
+	// $('#tree_button').on('click',function(){
+	// 	var siblings = $(this).siblings();
 
-		siblings.each(function(){
-			$(this).removeClass('selected');
-		})
-    	$(this).addClass('selected');
+	// 	siblings.each(function(){
+	// 		$(this).removeClass('selected');
+	// 	})
+ //    	$(this).addClass('selected');
 
-	});
-	$('#bush_button').on('click',function(){
-		var siblings = $(this).siblings();
+	// });
+	// $('#bush_button').on('click',function(){
+	// 	var siblings = $(this).siblings();
 
-		siblings.each(function(){
-			$(this).removeClass('selected');
-		})
-    	$(this).addClass('selected');
+	// 	siblings.each(function(){
+	// 		$(this).removeClass('selected');
+	// 	})
+ //    	$(this).addClass('selected');
 
-	});
-	$('#grass_button').on('click',function(){
-		var siblings = $(this).siblings();
+	// });
+	// $('#grass_button').on('click',function(){
+	// 	var siblings = $(this).siblings();
 
-		siblings.each(function(){
-			$(this).removeClass('selected');
-		})
-    	$(this).addClass('selected');
+	// 	siblings.each(function(){
+	// 		$(this).removeClass('selected');
+	// 	})
+ //    	$(this).addClass('selected');
 
-	});
-	$('#paver_button').on('click',function(){
-		var siblings = $(this).siblings();
+	// });
+	// $('#paver_button').on('click',function(){
+	// 	var siblings = $(this).siblings();
 
-		siblings.each(function(){
-			$(this).removeClass('selected');
-		})
-    	$(this).addClass('selected');
+	// 	siblings.each(function(){
+	// 		$(this).removeClass('selected');
+	// 	})
+ //    	$(this).addClass('selected');
 
-	});
-	$('#flower_button').on('click',function(){
-		var siblings = $(this).siblings();
+	// });
+	// $('#flower_button').on('click',function(){
+	// 	var siblings = $(this).siblings();
 
-		siblings.each(function(){
-			$(this).removeClass('selected');
-		})
-    	$(this).addClass('selected');
+	// 	siblings.each(function(){
+	// 		$(this).removeClass('selected');
+	// 	})
+ //    	$(this).addClass('selected');
 
-	});
+	// });
+	// $('#gravel_button').on('click',function(){
+	// 	var siblings = $(this).siblings();
+
+	// 	siblings.each(function(){
+	// 		$(this).removeClass('selected');
+	// 	})
+ //    	$(this).addClass('selected');
+
+	// });
+	// $('#raisedbed_button').on('click',function(){
+	// 	var siblings = $(this).siblings();
+
+	// 	siblings.each(function(){
+	// 		$(this).removeClass('selected');
+	// 	})
+ //    	$(this).addClass('selected');
+
+	// });
 
 
 
@@ -132,7 +150,7 @@ $(function(){
 
 		var thisLeft = ($(this).offset().left)
 		//var thisTop = $(this).offset().top + $(dragEl).outerHeight()
-		var thisTop = $(this).offset().top + $(dragEl).outerHeight()/2
+		var thisTop = $(this).offset().top + $(dragEl).outerHeight()/2 +15
 		$('.target').append(dragEl)
 
 		dragEl.css({
@@ -163,41 +181,6 @@ $(function(){
 
  
 
-	// $('#btnSave').click(function(){
-	// 	//var clonedImage =[];
- //        var clonedImage = $(".target").children('.drag-item');
- //        //var searchEles = $("drag-item");
-
- //        for(var i = 0; i < clonedImage.length; i++) {
-
-	//         var control = clonedImage[i];
-           
-	// 		var xPos = control.style.left;
- //        	var yPos = control.style.top;
-
- //            //return {xPos,Ypos}
- //            console.log("xPos :" + xPos);
- //        	console.log("yPos :" + yPos);
-	// 	}
-        
- //    });
-
-// $('#btnSave').on('click', function(){
-
-// 	data = $(".gardensubtitle").val();
-
-// 	console.log(data);
-   	
-//    	$.post("/api/garden/layout_name", function(data){
-
-   		
-//    	})
-
-// });
-
-	
-
-	
 
 	var garden_id = 0;
 
@@ -256,7 +239,8 @@ $(function(){
 				.done(function(response){
 					console.log(data); 
 					console.log('Item Saved' + response);
-					alert("Congrats");
+					//alert("Congrats");
+					$('span.lightbox').addClass('lb-open');
 				})
 				.fail(function(response) {
 					console.log( "error" + response );
@@ -268,21 +252,11 @@ $(function(){
 		.fail(function() {
 			console.log( "error" );
 			 // alert("Enter the Title");
-			 $('span.garden-title-error').addClass('on');
+			 $('span.t-error').addClass('t-error-open');
 		});	
 	});
 
 
-
-
-
-
-   
-    
-
-
-
-	
 
 	$('#tree_button').on('click', function(){
 
@@ -396,6 +370,57 @@ $(function(){
 
 
 	 	})
+
+	 });
+	$('#raisedbed_button').on('click', function(){
+
+	$('.stencils').html("");
+
+
+
+
+	 	$.get("/api/item/category/raisedbed", function(data){
+
+		 	console.log(data);
+
+	 		for(var i=0; i< data.length;i++){
+		 	
+		 	item = data[i];
+
+		 	var bindData = template(item);
+
+		  	$('.stencils').append(bindData);
+
+			}
+
+
+	 	})
+	 	
+	 });
+	$('#gravel_button').on('click', function(){
+
+	$('.stencils').html("");
+
+
+
+
+	 	$.get("/api/item/category/gravel", function(data){
+
+		 	console.log(data);
+
+	 		for(var i=0; i< data.length;i++){
+		 	
+		 	item = data[i];
+
+		 	var bindData = template(item);
+
+		  	$('.stencils').append(bindData);
+
+			}
+
+
+	 	})
+	 	
 	 });
 
 	 $("#printbutton").on("click", function () {
@@ -403,30 +428,14 @@ $(function(){
              
          });
 
+	 $('.lb-close').on('click',function(){
+	 	$('.lightbox').removeClass('lb-open');
 
+	 })
+	 $('.t-error-close').on('click',function(){
+	 	$('.t-error').removeClass('t-error-open');
 
-
-
-
-
-
-
-
-
-
-		// $('#btnSave').click(function(){
-		// 	$('.lightbox').toggleClass('lb-open');
-
-
-		// });
-
-
-		// $('#login').click(function(){
-		// 	$('.lightbox').toggleClass('lb-open');
-
-
-		// });
-
+	 })
 
 
 });

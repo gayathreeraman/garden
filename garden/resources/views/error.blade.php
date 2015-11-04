@@ -15,9 +15,8 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-                background-color: red;
+                
+                background-color:#F2F2EA;
             }
 
             .container {
@@ -32,15 +31,18 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 30px;
+                font-size:strong 
+                color:black
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+            
+                <div class="title"> You are trying to reach a record that is been deleted. </div>
+                <a href="/">HOME</a>
+          
         </div>
     </body>
 </html>

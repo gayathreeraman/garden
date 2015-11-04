@@ -112,24 +112,7 @@ class GardenController extends Controller{
 	}
 
 
-	 //   public function update(garden_id){
-
-	 //   	$garden = new Garden($garden_id);
-
-		// return view("home",["garden"=>$garden]);
-	 //   }
-
-	// public function postUpdate($garden_id) {
-	// 	$garden = Garden::get($garden_id);
-	// 	print_r($garden->layout_name);
-	// 	$garden->layout_name = Request::input('layout_name');
-
-		
-	// 	$garden->save();
-	// 	return redirect("home");
-		
-		
-	// }
+	 
 
 	
 
